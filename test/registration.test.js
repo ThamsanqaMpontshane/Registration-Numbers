@@ -83,7 +83,7 @@ describe('REGISTRATON', async () => {
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, []);
         })
-    afterEach(async () => {
+    after(async () => {
         await db.manyOrNone('Truncate reg_numbers');
     })
 });

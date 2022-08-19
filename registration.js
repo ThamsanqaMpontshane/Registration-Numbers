@@ -7,8 +7,8 @@ function registration(db){
         if(selectReg.length == 0 && regNumberRegex.test(regNumber) && regNumber.length == 5 && count[0].count < 10){
         const theSlice = regNumber.slice(0, 2);
         const upperCased = theSlice.toUpperCase();
-        const selectId = await db.one(`SELECT id FROM towns WHERE plate = $1`, [upperCased]);
-        const theReg = await db.one(`INSERT INTO reg_numbers (reg_number, town_id) VALUES ($1, $2) RETURNING reg_number`, [regNumber, selectId.id]);
+        const selectId = await db.manyOrNone(`SELECT id FROM towns WHERE plate = $1`, [upperCased]);
+        const theReg = await db.manyOrNone(`INSERT INTO reg_numbers (reg_number, town_id) VALUES ($1, $2) RETURNING reg_number`, [regNumber, selectId.id]);
         return theReg.reg_number;
         }else if (selectReg.length > 0){
             return selectReg[0].reg_number;
