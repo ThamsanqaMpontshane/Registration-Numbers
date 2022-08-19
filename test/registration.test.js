@@ -31,42 +31,42 @@ describe('REGISTRATON', async () => {
             await theRegies.setRegNumber('CA123');
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234', 'CY345']);
-        });
+        }),
         it('should return the reg number if it is valid', async () => {
             const regNumber = await theRegies.setRegNumber('CA123');
             assert.equal(regNumber, 'CA123');
-        });
+        }),
         it('should return the reg number if it is valid', async () => {
             const regNumber = await theRegies.setRegNumber('CY234');
             assert.equal(regNumber, 'CY234');
-        });
+        }),
         it('should return all reg numbers', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234']);
-        });
+        }),
         it('should return all reg numbers', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
             await theRegies.setRegNumber('CY345');
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234', 'CY345']);
-        })
+        }),
         it('should return all reg numbers by city', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
             await theRegies.setRegNumber('CY345');
             const regNumbers = await theRegies.getRegNumberByCity('CA');
             assert.deepEqual(regNumbers, ['CA123']);
-        });
+        }),
         it('should return all reg numbers by city', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
             await theRegies.setRegNumber('CY345');
             const regNumbers = await theRegies.getRegNumberByCity('CY');
             assert.deepEqual(regNumbers, ['CY234', 'CY345']);
-        });
+        }),
         it('should return all reg numbers by city', async () => {
             // CL
             await theRegies.setRegNumber('CA123');
@@ -74,7 +74,7 @@ describe('REGISTRATON', async () => {
             await theRegies.setRegNumber('CY345');
             const regNumbers = await theRegies.getRegNumberByCity('CL');
             assert.deepEqual(regNumbers, ['CL234']);
-        })   
+        }),
         it('should reset the reg numbers', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -83,7 +83,7 @@ describe('REGISTRATON', async () => {
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, []);
         })
-    after(async () => {
-        await db.any('DELETE FROM reg_numbers');
-    });
+    afterEach(async () => {
+        await db.any('Truncate reg_numbers');
+    })
 });
