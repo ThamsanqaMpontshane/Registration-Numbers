@@ -6,6 +6,6 @@ Create table towns (
 Create table reg_numbers (
     id serial primary key,
     reg_number varchar(255) not null,
-    town_id integer not null,
+    town_id integer null,
     FOREIGN KEY (town_id) REFERENCES towns (id)
 );
