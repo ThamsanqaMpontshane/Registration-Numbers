@@ -22,7 +22,7 @@ const theRegies = registration(db);
 describe('REGISTRATON', () => {
 
     beforeEach(async () => {
-        await db.any('DELETE FROM reg_numbers');
+        await db.any('DELETE FROM reg_numbers where id > 0');
     });    
     describe('DUPLICATES', async () => {
         it('should not allow duplicates', async () => {
@@ -94,7 +94,7 @@ describe('REGISTRATON', () => {
         })
     });
 
-    afterEach(async () => {
+    after(async () => {
         await db.any('DELETE FROM reg_numbers');
     });
 });
