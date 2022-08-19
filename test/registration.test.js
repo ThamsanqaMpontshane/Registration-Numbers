@@ -22,8 +22,8 @@ const theRegies = registration(db);
 describe('REGISTRATON', async () => {
 
     beforeEach(async () => {
-        await db.any('DELETE FROM reg_numbers where id > 0');
-    });    
+        await db.manyOrNone('DELETE FROM reg_numbers where id > 0');
+        });    
         it('should not allow duplicates', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -84,6 +84,6 @@ describe('REGISTRATON', async () => {
             assert.deepEqual(regNumbers, []);
         })
     afterEach(async () => {
-        await db.any('Truncate reg_numbers');
+        await db.manyOrNone('Truncate reg_numbers');
     })
 });
