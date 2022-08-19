@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container">    
+        <div class="all">
+        <h1>Registration Numbers</h1>
+        <br>
+        <!-- !first form -->
+        <form action="/reg_numbers" method="post">
+        <div class="message">
+        </div>
+        <div class="input">
+            <input type="text" class="regNumberEntered" placeholder="enter a registration number" name="myReg">
+            <button type="submit" class="addRegNumber btn blue">Add reg number</button>
+        </div>
+        <br>
+        <br>
+        </form>
+        
+    </div>
+        <!-- !second form -->
+         <form action="/filter" method="post">
+        <div class="filter">
+            <strong>Filter by town</strong>
+            <label for="all">All Town</label>
+            <input type="radio" name="town" id="all" value="ALL">
+            <label for="cy">Bellvile</label>
+            <input type="radio" name="town" id="cy" value="CY">
+            <label for="cl">Paarl</label>
+            <input type="radio" name="town" id="cl" value="CL">
+            <label for="ca">Cape Town</label>
+            <input type="radio" name="town" id="ca" value="CA">
+        </div> 
+        <br>
+        <button type="submit" class="show">
+         SHOW
+        </button>
+         <a href="/reset"><button type="submit" class="reset">RESET</button></a>
+    </form>
+   
+    <div class="light">
+        <div class="circle"></div>
+
+     <div class="messagebox">
+        {{#each regNumbers}}
+        <div style="border: 2px solid black; height: 31px; width: 78.5px; background-color:yellow; margin-top: 3px; border-radius: 6px; overflow: hidden;">
+            <h2 class="display" style="padding: 1px;">{{this}}</h2>
+        </div>
+        {{/each}}
+        <p> {{message}} </p>
+     </div>   
+
+        <div class="circle"></div>
+    </div>
+    
+    </div>
+    <script src="lights.js"></script>
+</body>
+</html>
