@@ -24,7 +24,6 @@ describe('REGISTRATON', () => {
     beforeEach(async () => {
         await db.any('DELETE FROM reg_numbers where id > 0');
     });    
-    describe('DUPLICATES', async () => {
         it('should not allow duplicates', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -32,8 +31,7 @@ describe('REGISTRATON', () => {
             await theRegies.setRegNumber('CA123');
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234', 'CY345']);
-        })
-    });
+        });
     describe('SET REG NUMBER', async () => {
         it('should return the reg number if it is valid', async () => {
             const regNumber = await theRegies.setRegNumber('CA123');
