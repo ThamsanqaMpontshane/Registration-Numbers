@@ -19,7 +19,7 @@ if(process.env.NODE_ENV == "production"){
 const db = pgp(config);
 const theRegies = registration(db);
 
-describe('REGISTRATON', () => {
+describe('REGISTRATON', async () => {
 
     beforeEach(async () => {
         await db.any('DELETE FROM reg_numbers where id > 0');
@@ -32,7 +32,6 @@ describe('REGISTRATON', () => {
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234', 'CY345']);
         });
-    describe('SET REG NUMBER', async () => {
         it('should return the reg number if it is valid', async () => {
             const regNumber = await theRegies.setRegNumber('CA123');
             assert.equal(regNumber, 'CA123');
@@ -40,9 +39,7 @@ describe('REGISTRATON', () => {
         it('should return the reg number if it is valid', async () => {
             const regNumber = await theRegies.setRegNumber('CY234');
             assert.equal(regNumber, 'CY234');
-        })
-    });
-    describe('GET REG NUMBER',async () => {
+        });
         it('should return all reg numbers', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -56,8 +53,6 @@ describe('REGISTRATON', () => {
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, ['CA123', 'CY234', 'CY345']);
         })
-    });
-    describe('GET REG NUMBER BY CITY', async () => {
         it('should return all reg numbers by city', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -80,8 +75,6 @@ describe('REGISTRATON', () => {
             const regNumbers = await theRegies.getRegNumberByCity('CL');
             assert.deepEqual(regNumbers, ['CL234']);
         })   
-    });
-    describe('RESET', () => {
         it('should reset the reg numbers', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
@@ -90,8 +83,6 @@ describe('REGISTRATON', () => {
             const regNumbers = await theRegies.getRegNumber();
             assert.deepEqual(regNumbers, []);
         })
-    });
-
     after(async () => {
         await db.any('DELETE FROM reg_numbers');
     });
