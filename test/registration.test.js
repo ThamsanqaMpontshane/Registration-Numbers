@@ -24,7 +24,7 @@ describe('REGISTRATON', () => {
     beforeEach(async () => {
         await db.any('DELETE FROM reg_numbers');
     });    
-    describe('DUPLICATES', () => {
+    describe('DUPLICATES', async () => {
         it('should not allow duplicates', async () => {
             await theRegies.setRegNumber('CA123');
             await theRegies.setRegNumber('CY234');
