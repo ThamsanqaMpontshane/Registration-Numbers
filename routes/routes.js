@@ -22,7 +22,7 @@ const regies = (theRegies) => {
             return;
         }
         const regNumbers = await theRegies.getRegNumberByCity(town);
-        if (regNumbers.length === 0) {
+        if (regNumbers.length === 0 && town != "ALL") {
             var message = `No Registration Numbers found for ${town}`;
         }
         res.render("index", {
