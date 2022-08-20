@@ -25,7 +25,7 @@ function registration(db){
         return theregies.map(reg => reg.reg_number);
 }
     async function reset(){
-        await db.manyOrNone(`DELETE FROM reg_numbers`);
+       return await db.manyOrNone(`DELETE FROM reg_numbers where id > 0`);
     }
 
     return {
