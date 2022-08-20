@@ -13,7 +13,7 @@ function registration(db){
         }else if (selectReg.length > 0){
             return selectReg[0].reg_number;
         }
-    }
+}
     // !F2
     async function getRegNumber(){
         const theregies = await db.manyOrNone(`SELECT reg_number FROM reg_numbers`);
@@ -24,15 +24,15 @@ function registration(db){
         const theregies = await db.manyOrNone(`SELECT reg_number FROM reg_numbers WHERE town_id = (SELECT id FROM towns WHERE plate = $1)`, [town]);
         return theregies.map(reg => reg.reg_number);
 }
+    // !F4
     async function reset(){
-       return await db.none(`DELETE FROM reg_numbers where id > 0`);
-    }
-
+       return await db.none(`delete from reg_numbers where id > 0`);
+}
     return {
         setRegNumber,
         getRegNumber,
         getRegNumberByCity,
-        reset
+        reset,
     }
 }
 export default registration;
