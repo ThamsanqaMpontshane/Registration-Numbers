@@ -1,3 +1,6 @@
+//  import errorSounds from "./sound.js"
+//  const theSound = errorSounds();
+
 function registration(db){
     // !F1
     async function setRegNumber(regNumber){
@@ -13,6 +16,7 @@ function registration(db){
         }else if (selectReg.length > 0){
             return selectReg[0].reg_number;
         }
+        theSound.soundDecision()
 }
     // !F2
     async function getRegNumber(){
@@ -26,8 +30,8 @@ function registration(db){
 }
     // !F4
     async function reset(){
-       return await db.none(`delete from reg_numbers where id > 0`);
-}
+       return await db.manyOrNone(`delete from reg_numbers`);
+}   
     return {
         setRegNumber,
         getRegNumber,

@@ -27,11 +27,6 @@ const regies = (theRegies) => {
         if (regNumbers.length === 0 && town != "ALL") {
             var message = `No Registration Numbers found for ${town}`;
         }
-        // }else if (regNumberRegex.test(myReg) == false) {
-        //     var message = `Invalid Registration Number`;
-        // }else if (regNumbers.length > 0 && regNumberRegex.test(myReg) == true) {
-        //     var message = `Registration Number Exists`;
-        // }
         res.render("index", {
             regNumbers,
             message
@@ -39,7 +34,7 @@ const regies = (theRegies) => {
     }
     async function resetRegNumbers(req, res) {
         await theRegies.reset();
-        res.redirect("/");
+        res.redirect('/');
     }
     return {
         defaultRoute,

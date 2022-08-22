@@ -10,7 +10,7 @@ function changeColor() {
 // play sound everytime when btn is clicked
 function playSound() {
     const audio = new Audio('./mixkit-car-horn-718.wav');
-    audio.play();
+    return audio.play();
 }
 
 
