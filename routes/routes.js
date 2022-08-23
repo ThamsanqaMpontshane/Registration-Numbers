@@ -16,11 +16,11 @@ const regies = (theRegies) => {
         if(regNumberRegex.test(myReg) == false){
             message = 'Invalid Registration Number'
             // mySound.error1();
-            return error1.play();
+            // return error1.play();
         }else if(getTheReg.includes(myReg)){
             message = 'Registration Number Exist'
             // mySound.error2();
-            return error2.play();
+            // return error2.play();
         }
         await theRegies.setRegNumber(myReg);
         res.redirect("/");
@@ -46,7 +46,7 @@ const regies = (theRegies) => {
     }
     async function resetRegNumbers(req, res) {
         await theRegies.reset();
-        reset.play()
+        // reset.play()
         res.redirect('/');
     }
     return {

@@ -41,6 +41,6 @@ function registration(db){
         getRegNumberByCity,
         reset,
         // sounds
-    }
+    } 
 }
 export default registration;
