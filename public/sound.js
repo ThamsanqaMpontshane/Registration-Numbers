@@ -1,41 +1,36 @@
-import registration from "../registration";
-
-const theReg = registration(db);
 function errorSounds() {
     function resetErrorSounds() {
+        // reset button cicked
         const errorSound = new Audio("./reset.mp3");
         return errorSound.play();
     };
     function error1() {
+        // invalid registration
         const errorSound = new Audio("./error1.mp3");
         return errorSound.play();
     };
     function error2() {
+        // reg number exist
         const errorSound = new Audio("./error2.mp3");
         return errorSound.play();
-    }
-    function error3() {
-        const errorSound = new Audio("./error3.mp3");
-        return errorSound.play();
-    }
-    function soundDecision(regNumber) {
-        const regex = /^[a-zA-Z]{2}\d{3}$/;
-        if (regex.test(regNumber) === false && regNumber.length != 5) {
-            // invalid reg number
-            return error1();
-        } 
-        else if (theReg.getRegNumber().includes(regNumber)) {
-            // reg number exists
-            return error2();
-        }
     }
     return {
         resetErrorSounds,
         error1,
         error2,
-        error3,
-        soundDecision
     }
 };
 
 export default errorSounds;
+
+import {Howl, Howler} from 'howler';
+const error1 = new Howl({
+  src: ['./public/error1.mp3'],
+});
+const error2 = new Howl({
+    src: ['./public/error2.mp3']
+  });
+  
+const reset = new Howl({
+    src: ['./public/reset.mp3']
+  });
