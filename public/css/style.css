@@ -28,10 +28,13 @@ body{
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-p {
+.mypdiv {
     color: white;
     font-size: 1.2em;
-    margin-left: 41%;
+    width: 31%;
+    margin-left: 36.7%;
+    /* background-color: yellow; */
+    text-align: center;
 }
 .input{
     width: 290px;
@@ -145,6 +148,14 @@ label{
     margin-top: 8.8%;
     visibility: hidden;
     }  
+    .mypdiv {
+        color: white;
+        font-size: 1.2em;
+        width: 31%;
+        margin-left: 36.7%;
+        /* background-color: yellow; */
+        text-align: center;
+    }
     .circle2{
         width: 100px;
         /* make circle */
@@ -270,6 +281,14 @@ label{
     margin-top: 8.8%;
     visibility: hidden;
     } 
+    .mypdiv {
+        color: white;
+        font-size: 1.2em;
+        width: 31%;
+        margin-left: 36.7%;
+        /* background-color: yellow; */
+        text-align: center;
+    }
     .circle2{
         width: 100px;
         /* make circle */
