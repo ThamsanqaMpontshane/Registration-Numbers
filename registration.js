@@ -5,7 +5,7 @@
 function registration(db){
     // !F1
     async function setRegNumber(regNumber){
-        const regNumberRegex = /^[a-zA-Z]{2}\d{3}$/;
+        const regNumberRegex = /^[A-Z]{2}\d{3}$/;
         const selectReg = await db.manyOrNone('select * from reg_numbers where reg_number = $1',[regNumber]);
         const count = await db.manyOrNone('select count(*) from reg_numbers');
         if(selectReg.length == 0 && regNumberRegex.test(regNumber) && regNumber.length == 5 && count[0].count < 10){
