@@ -22,6 +22,9 @@ const regies = (theRegies) => {
             // mySound.error2();
             // return error2.play();
         }
+        else{
+            message = '';
+        }
         await theRegies.setRegNumber(myReg);
         res.redirect("/");
     }
