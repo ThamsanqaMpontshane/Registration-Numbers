@@ -145,7 +145,8 @@ label{
         margin-left: 41%;
     }
     .etc{
-        margin-left: 26%;
+        margin-left: -5%;
+        width: 95%;
         margin-top: 5%;
         color: grey;
         font-size: 2.2rem;
@@ -245,7 +246,7 @@ label{
     .regNumbersDiv{
         border: 3px solid black; 
         height: 2.7rem;
-        width: 6rem; 
+        width: 8.5rem; 
         background-color:yellow; 
         margin-top: 1%; 
         border-radius: 6px;
@@ -295,10 +296,10 @@ label{
     visibility: hidden;
     } 
     .etc{
-        margin-left: 28%;
+        margin-left: 10%;
         margin-top: 5%;
         color: grey;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         }
     .mypdiv {
         color: white;
