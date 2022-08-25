@@ -19,7 +19,7 @@ body{
     height: 100%;
 }   
 .etc{
-    margin-left: 18%;
+    margin-left: 6%;
     color: grey;
     }
 .messagebox{
@@ -64,7 +64,8 @@ body{
 }
 .regNumbersDiv{
     border: 2px solid black; 
-    height: 31px; width: 78.5px; 
+    height: 31px;
+    width: 128px; 
     background-color:yellow; 
     margin-top: 3px; 
     border-radius: 6px; 

@@ -5,10 +5,11 @@
 function registration(db){
     // !F1
     async function setRegNumber(regNumber){
-        const regNumberRegex = /^[A-Z]{2}\d{3}$/;
+        const regNumberRegex = /^((CA|CY|CL)\s([0-9]){3}(\-|\s)([0-9]){3})$/;
+        console.log(regNumberRegex.test(regNumber));
         const selectReg = await db.manyOrNone('select * from reg_numbers where reg_number = $1',[regNumber]);
         const count = await db.manyOrNone('select count(*) from reg_numbers');
-        if(selectReg.length == 0 && regNumberRegex.test(regNumber) && regNumber.length == 5 && count[0].count < 10){
+        if(selectReg.length == 0 && regNumberRegex.test(regNumber) && regNumber.length < 12 && count[0].count < 6){
         const theSlice = regNumber.slice(0, 2);
         const upperCased = theSlice.toUpperCase();
         const selectId = await db.one(`SELECT id FROM towns WHERE plate = $1`, [upperCased]);

@@ -9,7 +9,7 @@ const regies = (theRegies) => {
         });
     }
     async function addRegNumbers(req, res) {
-        const regNumberRegex = /^[A-Z]{2}\d{3}$/;
+        const regNumberRegex = /^((CA|CY|CL)\s([0-9]){3}(\-|\s)([0-9]){3})$/;
         const getTheReg = await theRegies.getRegNumber();
         // const mySound = await theRegies.sounds();
         const { myReg } = req.body;
