@@ -1,12 +1,7 @@
-
-// import errorSounds from "./public/sound.js";
-
-// const theSounds = errorSounds();
 function registration(db){
     // !F1
     async function setRegNumber(regNumber){
         const regNumberRegex = /^((CA|CY|CL)\s([0-9]){3}(\-|\s)([0-9]){3})$/;
-        console.log(regNumberRegex.test(regNumber));
         const selectReg = await db.manyOrNone('select * from reg_numbers where reg_number = $1',[regNumber]);
         const count = await db.manyOrNone('select count(*) from reg_numbers');
         if(selectReg.length == 0 && regNumberRegex.test(regNumber) && regNumber.length < 12 && count[0].count < 6){
@@ -33,15 +28,11 @@ function registration(db){
     async function reset(){
        return await db.none(`delete from reg_numbers`);
 }   
-    // async function sounds(){
-    //     return theSounds;
-    // }
     return {
         setRegNumber,
         getRegNumber,
         getRegNumberByCity,
         reset,
-        // sounds
     } 
 }
 export default registration;

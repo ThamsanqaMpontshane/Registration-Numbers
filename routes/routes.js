@@ -11,16 +11,11 @@ const regies = (theRegies) => {
     async function addRegNumbers(req, res) {
         const regNumberRegex = /^((CA|CY|CL)\s([0-9]){3}(\-|\s)([0-9]){3})$/;
         const getTheReg = await theRegies.getRegNumber();
-        // const mySound = await theRegies.sounds();
         const { myReg } = req.body;
         if(regNumberRegex.test(myReg) == false){
             message = 'Invalid Registration Number'
-            // mySound.error1();
-            // return error1.play();
         }else if(getTheReg.includes(myReg)){
             message = 'Registration Number Exist'
-            // mySound.error2();
-            // return error2.play();
         }
         else{
             message = '';
@@ -39,6 +34,7 @@ const regies = (theRegies) => {
             return;
         }
         const regNumbers = await theRegies.getRegNumberByCity(town);
+        // const theTown = await db.manyOrNone(`SELECT name from towns where plate = $1`,[town]);
         if (regNumbers.length === 0 && town != "ALL")  {
             var message = `No Registration Numbers found for ${town}`;
         }
@@ -49,7 +45,6 @@ const regies = (theRegies) => {
     }
     async function resetRegNumbers(req, res) {
         await theRegies.reset();
-        // reset.play()
         res.redirect('/');
     }
     return {
@@ -61,4 +56,3 @@ const regies = (theRegies) => {
 }
 
 export default regies;
-

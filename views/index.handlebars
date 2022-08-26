@@ -19,8 +19,7 @@
         </div>
         <div class="input">
             <input type="text" class="regNumberEntered" placeholder="enter a registration number" name="myReg" required >
-            <button type="submit" class="addRegNumber btn blue" onclick="playSound()" onmouseover="changeColor()">Add reg number</button>
-            
+            <button type="submit" class="addRegNumber btn blue" onmouseover="changeColor()">Add reg number</button>
         </div>
         <p class="etc">Etc: CA 123-134 , CY 569 364 , CL 598-346</p>
         </form>
@@ -70,10 +69,10 @@
         <div class="circle2"></div>
     </div>
        <div class="mypdiv">
-        <p style="color:red;"> {{message}} </p>
+        <p style="color:red;" class="theError"> {{message}} </p>
         </div>
        
     </div>
-    <script src="lights.js"></script>
+    <script src="./lights.js"></script>
 </body>
 </html>
