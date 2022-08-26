@@ -21,6 +21,7 @@ function registration(db){
 }
     // !F3
     async function getRegNumberByCity(town){
+        
         const theregies = await db.manyOrNone(`SELECT reg_number FROM reg_numbers WHERE town_id = (SELECT id FROM towns WHERE plate = $1)`, [town]);
         return theregies.map(reg => reg.reg_number);
 }
@@ -28,11 +29,14 @@ function registration(db){
     async function reset(){
        return await db.none(`delete from reg_numbers`);
 }   
+const getTownName =  async town => { 
+    return await db.one(`SELECT name from towns where plate = $1`,[town]);}
     return {
         setRegNumber,
         getRegNumber,
         getRegNumberByCity,
         reset,
+        getTownName
     } 
 }
 export default registration;

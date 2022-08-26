@@ -34,9 +34,9 @@ const regies = (theRegies) => {
             return;
         }
         const regNumbers = await theRegies.getRegNumberByCity(town);
-        // const theTown = await db.manyOrNone(`SELECT name from towns where plate = $1`,[town]);
         if (regNumbers.length === 0 && town != "ALL")  {
-            var message = `No Registration Numbers found for ${town}`;
+            let name = await theRegies.getTownName(town);
+            var message = `No Registration Numbers found for ${name.name}`;
         }
             res.render("index", {
                 regNumbers,
