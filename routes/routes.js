@@ -26,6 +26,7 @@ const regies = (theRegies) => {
 
     async function filterRegNumbers(req, res) {
         const { town } = req.body;
+        // gauteng
         if (town == "ALL") {
             const regNumbers = await theRegies.getRegNumber();
             res.render("index", {
@@ -35,7 +36,7 @@ const regies = (theRegies) => {
         }
         const regNumbers = await theRegies.getRegNumberByCity(town);
         if (regNumbers.length === 0 && town != "ALL")  {
-            let name = await theRegies.getTownName(town);
+            const name = await theRegies.getTownName(town);
             var message = `No Registration Numbers found for ${name.name}`;
         }
             res.render("index", {

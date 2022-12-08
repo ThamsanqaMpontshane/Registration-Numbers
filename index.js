@@ -40,7 +40,7 @@ app.use(express.static("public"));
 app.get("/", theRoutes.defaultRoute);
 app.post("/reg_numbers", theRoutes.addRegNumbers);
 app.post("/filter", theRoutes.filterRegNumbers);
-app.get("/reset", theRoutes.resetRegNumbers);
+app.post("/reset", theRoutes.resetRegNumbers);
 
 
 //!PORT
